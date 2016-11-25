@@ -29,5 +29,7 @@ namespace Curso_udemy.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Curso_udemy.Models.Clientes> Clientes { get; set; }
     }
 }

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "listaClientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clientes</h2>
+
+
+@if (Model != null)
+{
+    <ul>
+        @foreach (var cliente in Model)
+        {
+            string nome = cliente.nome;
+       
+            <li>@Html.ActionLink(nome, "detalhesCliente", new { id = Model.id })</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Não existem clientes cadastrados</p>
+}
+

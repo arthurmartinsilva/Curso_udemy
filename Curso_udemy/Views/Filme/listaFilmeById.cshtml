@@ -1,0 +1,22 @@
+﻿@model Curso_udemy.Models.FilmeModel
+@{
+    ViewBag.Title = "listaFilmeById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Filme</h2>
+
+@if (Model == null)
+{
+    <p>Não existe o filme procurado!</p>
+}
+else
+{
+    <li>
+        <ul>
+            @Model.nome
+        </ul>
+    </li>
+}
+
+

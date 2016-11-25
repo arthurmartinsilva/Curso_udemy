@@ -1,0 +1,28 @@
+﻿@model List<Curso_udemy.Models.FilmeModel>
+
+@{
+    ViewBag.Title = "lista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Filmes</h2>
+
+
+@if (Model != null)
+{
+    <ul>
+        @foreach (var filme in Model)
+        {
+            <li>@filme.nome</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Não existem filmes cadastrados</p>
+}
+
+
+
+
+
