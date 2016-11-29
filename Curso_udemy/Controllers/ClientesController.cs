@@ -1,127 +1,41 @@
-﻿using System;
+﻿using Curso_udemy.Models;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Curso_udemy.Models;
 
 namespace Curso_udemy.Controllers
 {
     public class ClientesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Clientes
-        public ActionResult Index()
+        List<Clientes> clientes = new List<Clientes>
         {
-            return View(db.Clientes.ToList());
-        }
+            new Clientes
+            {
+                id = 2,
+                nome = "Arthur"
+            },
+            new Clientes
+            {
+                id = 1,
+                nome = "Bruna"
+            }
+        };
 
-        // GET: Clientes/Details/5
-        public ActionResult Details(int? id)
+        // GET: Cliente/listaClientes
+        public ActionResult listaClientes()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Clientes clientes = db.Clientes.Find(id);
-            if (clientes == null)
-            {
-                return HttpNotFound();
-            }
             return View(clientes);
         }
 
-        // GET: Clientes/Create
-        public ActionResult Create()
+        // GET: Cliente/listaClientesByID/
+        public ActionResult listaClientesByID(int id)
         {
-            return View();
+            var cliente = clientes.Where(p => p.id == id).First();
+
+            return View(cliente);
         }
 
-        // POST: Clientes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nome")] Clientes clientes)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Clientes.Add(clientes);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(clientes);
-        }
-
-        // GET: Clientes/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Clientes clientes = db.Clientes.Find(id);
-            if (clientes == null)
-            {
-                return HttpNotFound();
-            }
-            return View(clientes);
-        }
-
-        // POST: Clientes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nome")] Clientes clientes)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(clientes).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(clientes);
-        }
-
-        // GET: Clientes/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Clientes clientes = db.Clientes.Find(id);
-            if (clientes == null)
-            {
-                return HttpNotFound();
-            }
-            return View(clientes);
-        }
-
-        // POST: Clientes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Clientes clientes = db.Clientes.Find(id);
-            db.Clientes.Remove(clientes);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

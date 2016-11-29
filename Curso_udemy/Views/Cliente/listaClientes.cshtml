@@ -14,7 +14,7 @@
         {
             string nome = cliente.nome;
        
-            <li>@Html.ActionLink(nome, "detalhesCliente", new { id = Model.id })</li>
+            <li>@Html.ActionLink(nome, "detalhesCliente", new { id = cliente.id })</li>
         }
     </ul>
 }

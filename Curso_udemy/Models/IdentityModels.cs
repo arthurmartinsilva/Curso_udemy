@@ -20,6 +20,7 @@ namespace Curso_udemy.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Clientes> Clientes { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,7 +30,5 @@ namespace Curso_udemy.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<Curso_udemy.Models.Clientes> Clientes { get; set; }
     }
 }

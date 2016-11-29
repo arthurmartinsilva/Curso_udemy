@@ -1,0 +1,17 @@
+﻿@model Curso_udemy.Models.Clientes
+
+@{
+    ViewBag.Title = "listaClientesByID";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cliente</h2>
+
+@if (Model == null)
+{
+    <p>Não existe o cliente procurado!</p>
+}
+else
+{
+    <h2>@Model.nome</h2>
+}
