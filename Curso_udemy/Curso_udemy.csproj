@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201611291053474_ApplyAnnotation.Designer.cs">
       <DependentUpon>201611291053474_ApplyAnnotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611300952107_MudandoCliente.cs" />
+    <Compile Include="Migrations\201611300952107_MudandoCliente.Designer.cs">
+      <DependentUpon>201611300952107_MudandoCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Clientes.cs" />
@@ -301,8 +305,6 @@
     <Content Include="Views\Filme\listaFilmes.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Filme\listaFilmeById.cshtml" />
-    <Content Include="Views\Cliente\listaClientes.cshtml" />
-    <Content Include="Views\Cliente\listaClientesByID.cshtml" />
     <Content Include="Views\Clientes\Details.cshtml" />
     <Content Include="Views\Clientes\listaClientes.cshtml" />
     <Content Include="Views\Clientes\listaClientesByID.cshtml" />
@@ -337,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611291053474_ApplyAnnotation.resx">
       <DependentUpon>201611291053474_ApplyAnnotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611300952107_MudandoCliente.resx">
+      <DependentUpon>201611300952107_MudandoCliente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

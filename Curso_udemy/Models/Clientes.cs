@@ -11,7 +11,7 @@ namespace Curso_udemy.Models
         public int id { get; set; }
         public MembroTipo MembroTipo { get; set; }
         [Required]
-        [StringLength(255)]
+        [StringLength(200)]
         public string nome { get; set; }
         public bool inscritoToNewsLetter { get; set; }
         public byte MembroTipoesId { get; set; }

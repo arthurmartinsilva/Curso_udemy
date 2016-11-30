@@ -8,12 +8,14 @@
 <h2>Clientes</h2>
 
 
+
 @if (Model != null)
 {
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Clientes</th>
+                <th>Assinatura</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +23,21 @@
             {
                 <tr>
                     <td>@Html.ActionLink(cliente.nome, "listaClientesByID", new { id = cliente.id })</td>
+                    @switch (cliente.MembroTipo.Desconto)
+                    {
+                        case 0:
+                            <td>Free</td>
+                            break;
+                        case 10:
+                            <td>Mensal</td>
+                            break;
+                        case 15:
+                            <td>Semestral</td>
+                            break;
+                        case 20:
+                            <td>Anual</td>
+                            break;
+                    }                 
                 </tr>
             }
         </tbody>

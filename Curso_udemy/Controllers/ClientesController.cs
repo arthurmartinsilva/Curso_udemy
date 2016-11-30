@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,30 +10,30 @@ namespace Curso_udemy.Controllers
 {
     public class ClientesController : Controller
     {
-        List<Clientes> clientes = new List<Clientes>
+        private ApplicationDbContext _context;
+
+        public ClientesController()
         {
-            new Clientes
-            {
-                id = 2,
-                nome = "Arthur"
-            },
-            new Clientes
-            {
-                id = 1,
-                nome = "Bruna"
-            }
-        };
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         // GET: Cliente/listaClientes
         public ActionResult listaClientes()
         {
+            var clientes = _context.Clientes.Include(c => c.MembroTipo).ToList();
+
             return View(clientes);
         }
 
         // GET: Cliente/listaClientesByID/
         public ActionResult listaClientesByID(int id)
         {
-            var cliente = clientes.Where(p => p.id == id).First();
+            var cliente = _context.Clientes.Where(p => p.id == id).First();
 
             return View(cliente);
         }
